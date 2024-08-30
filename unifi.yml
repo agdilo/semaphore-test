@@ -1,7 +1,13 @@
 ---
-- hosts: ubuntu_servers
-  become: true
+- name: Update and Upgrade Ubuntu Server
+  hosts: all
+  become: yes
+
   tasks:
-    - name: print os info
-      ansible.builtin.package:
-        name: apache2
+    - name: Update APT package index
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages to the latest version
+      apt:
+        upgrade: dist
