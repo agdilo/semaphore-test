@@ -8,7 +8,9 @@
         update_cache: yes
 
     - name: Upgrade all packages
-      apt:
-        upgrade: dist
-        autoremove: yes
-        autoclean: yes
+  apt:
+    upgrade: dist
+    autoremove: yes
+    autoclean: yes
+  async: 3600
+  poll: 5
