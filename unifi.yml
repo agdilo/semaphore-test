@@ -1,16 +1,10 @@
 ---
 - name: Update Ubuntu servers
-  hosts: UNIFI
+  hosts: all
   become: yes
+
   tasks:
-    - name: Update apt cache
+    - name: Update apt cache and upgrade all packages
       apt:
         update_cache: yes
-
-    - name: Upgrade all packages
-  apt:
-    upgrade: dist
-    autoremove: yes
-    autoclean: yes
-  async: 3600
-  poll: 5
+        upgrade: dist
